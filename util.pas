@@ -13,3 +13,22 @@ begin
    end;
    BackSlice := slice;
 end;
+
+function ReplaceHomeDir(Dir: string): string;
+var
+   HomeDir : string;
+begin
+{$ifdef FreeBSD}
+   HomeDir := Concat('/usr', GetUserDir());
+{$else}
+   HomeDir := GetUserDir();
+{$endif}
+
+   ReplaceHomeDir := StringReplace(Dir, HomeDir, '~/', []);
+end;
+
+
+procedure PasheeshError(msg: string);
+begin
+   WriteLn(msg);
+end;
