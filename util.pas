@@ -14,7 +14,7 @@ begin
    BackSlice := slice;
 end;
 
-function ReplaceHomeDir(Dir: string): string;
+function ShortenHomeDir(Dir: string): string;
 var
    HomeDir : string;
 begin
@@ -24,7 +24,7 @@ begin
    HomeDir := GetUserDir();
 {$endif}
 
-   ReplaceHomeDir := StringReplace(Dir, HomeDir, '~/', []);
+   ShortenHomeDir := StringReplace(Dir, HomeDir, '~/', []);
 end;
 
 
