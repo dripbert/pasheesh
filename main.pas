@@ -14,7 +14,6 @@ var
    args       : TStringDynArray;
    workingDir : string;
 
-
 {$INCLUDE util.pas}
 {$INCLUDE exec.pas}
 {$INCLUDE buildin.pas}
@@ -27,7 +26,7 @@ begin
       ReadLn(line);
 
       args  := SplitString(line, ' ');
-      sfile := FileSearch(args[0], Path);
+      sfile := FileSearch(args[0], Path, []);
       if args[0] = 'exit' then break
       else if args[0] = 'cd' then ChangeDir(BackSlice(args, 1))
       else if args[0] = 'type' then CmdType(args[1])
